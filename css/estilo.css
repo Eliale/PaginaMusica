@@ -1,0 +1,185 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 19/04/2016, 10:52:29 AM
+    Author     : anita
+*/
+
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+form{
+    text-align: center;
+    padding: 10px;
+}
+#texto{
+    border: 1px solid #DBE1EB;
+    font-size: 18px;
+    font-family: Arial, Verdana;
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -o-border-radius: 4px;
+    background: #FFFFFF;
+    background: linear-gradient(left, #FFFFFF, #F7F9FA);
+    background: -moz-linear-gradient(left, #FFFFFF, #F7F9FA);
+    background: -webkit-linear-gradient(left, #FFFFFF, #F7F9FA);
+    background: -o-linear-gradient(left, #FFFFFF, #F7F9FA);
+    color: #2E3133;
+}
+#texto:focus{
+    color: #2E3133;
+    border-color: #FBFFAD;
+}
+#busqueda{
+    background-image: url("http://www.planwallpaper.com/static/images/recycled_texture_background_by_sandeep_m-d6aeau9_PZ9chud.jpg"); 
+    width: 65%;
+    display: block;
+    float:left;
+    padding: 10px;
+    margin-left: 10px;
+    color: white;
+    border-radius: 10px;
+}
+
+
+#top,#topten{
+    margin-right: 10px;
+    float: right;
+    padding: 10px;
+    border-radius: 1em;
+    width: 30%;
+    background-image: url("http://www.planwallpaper.com/static/images/recycled_texture_background_by_sandeep_m-d6aeau9_PZ9chud.jpg"); 
+}
+#top label{
+    color: white;
+    margin-left: 15px;
+    margin-right: 15px; 
+    font-size: 26px;
+    text-align: center;
+}
+#topten label{
+    color: white;
+    margin-left: 15px;
+    margin-right: 15px; 
+    font-size: 16px;
+    text-align: center;
+}
+#topten a,#top a,#last a{
+    color: #57ABB8;
+    font-weight: bold;
+    text-decoration: none;
+}
+#top a:hover,#last a:hover{
+    color: #F60;
+}
+#topten h2,#top h2 ,#last h2{
+    color: white;
+    text-align: center;
+}
+#top input{
+    margin-left:15px;
+    border-radius: 10px;
+}
+#top input:hover{
+    margin-left:15px;
+    border-radius: 0 0.5em 0 0.5em;
+    height: 50px;
+    width: 50px;
+    border: 0.1em dashed #F60;
+    color: #FFF;
+    -ms-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    -webkit-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+}
+
+
+
+#last{
+    
+    padding: 10px;
+    width: 97%;
+    color:white;
+    text-align: center;
+    border-radius: 10px;
+}
+#last img{
+    border-radius: 10px;
+}
+#last img:hover{
+    margin-left:15px;
+    border-radius: 0 10px 0 10px;
+    height: 250px;
+    width: 250px;
+    border: 0.1em dashed #F60;
+    color: #FFF;
+    -ms-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    -webkit-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+}
+#last p{
+    font-size: 26px;
+}
+#deezer{
+    text-align: center;
+    padding: 10px;
+    width: 97%;
+    border-radius: 10px;
+}
+#albumimg{
+    height: 250px;width: 250px;
+    margin:12px;
+}
+.coleccion{
+    float: left;    
+    width: 270px;
+}
+#reproductor{
+    margin-top: 10px;
+    text-align: center;
+    border-radius: 10px;
+    color:white;
+    background-image: url("http://www.planwallpaper.com/static/images/recycled_texture_background_by_sandeep_m-d6aeau9_PZ9chud.jpg"); 
+    padding: 10px;
+    margin-left: 10px;
+    width: 65%;
+    float: left;
+}
+#buscar:hover {
+ background: rgba(0,0,0,0);
+ color: #3a7999;
+ box-shadow: inset 0 0 0 3px #3a7999;
+}
+#buscar {
+ border: none;
+ background: #3a7999;
+ color: #f2f2f2;
+ padding: 10px;
+ font-size: 18px;
+ border-radius: 5px;
+ position: relative;
+ box-sizing: border-box;
+ transition: all 500ms ease;
+}
+
+   color: white;
+    margin-left: 15px;
+    margin-right: 15px; 
+    font-size: 26px;
+    text-align: center;
+}
+
+
