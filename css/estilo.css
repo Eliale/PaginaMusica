@@ -17,7 +17,7 @@ form{
     text-align: center;
     padding: 10px;
 }
-#texto{
+#texto,#cancion{
     border: 1px solid #DBE1EB;
     font-size: 18px;
     font-family: Arial, Verdana;
@@ -36,7 +36,7 @@ form{
     background: -o-linear-gradient(left, #FFFFFF, #F7F9FA);
     color: #2E3133;
 }
-#texto:focus{
+#texto:focus,#cancion:focus{
     color: #2E3133;
     border-color: #FBFFAD;
 }
@@ -52,7 +52,7 @@ form{
 }
 
 
-#top,#topten{
+#top,#topten,#descargar{
     margin-right: 10px;
     float: right;
     padding: 10px;
@@ -60,7 +60,7 @@ form{
     width: 30%;
     background-image: url("http://www.planwallpaper.com/static/images/recycled_texture_background_by_sandeep_m-d6aeau9_PZ9chud.jpg"); 
 }
-#top label{
+#top label ,#descargar label{
     color: white;
     margin-left: 15px;
     margin-right: 15px; 
@@ -74,7 +74,7 @@ form{
     font-size: 16px;
     text-align: center;
 }
-#topten a,#top a,#last a{
+#topten a,#top a,#last a,#descargar a{
     color: #57ABB8;
     font-weight: bold;
     text-decoration: none;
@@ -82,7 +82,7 @@ form{
 #top a:hover,#last a:hover{
     color: #F60;
 }
-#topten h2,#top h2 ,#last h2{
+#topten h2,#top h2 ,#last h2,#descargar h2{
     color: white;
     text-align: center;
 }
@@ -158,12 +158,12 @@ form{
     width: 65%;
     float: left;
 }
-#buscar:hover {
+#buscar:hover,#buscar_cancion:hover {
  background: rgba(0,0,0,0);
  color: #3a7999;
  box-shadow: inset 0 0 0 3px #3a7999;
 }
-#buscar {
+#buscar,#buscar_cancion {
  border: none;
  background: #3a7999;
  color: #f2f2f2;
