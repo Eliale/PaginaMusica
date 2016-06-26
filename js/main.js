@@ -9,7 +9,7 @@
         lastfm(valor);
         search(valor);
         topViral(valor);
-        top_ten(valor);
+       // top_ten(valor);
         youtube(valor);
         get_mp3(valor);
     }
@@ -50,7 +50,6 @@ function lastfm(valor) {
                
                 $("#last").append("<a title='abre la imagen tamaño mega' href='" + imagen + "' target='_blank'><img src='" + imagen + "' alt='Smiley face' height='250' width='250'\><\a>");
                 $("#last").append("<h2>Biografia</h2>");
-
                 $("#last").append("<a href= 'http://www.last.fm/es/" + subPagina + "' target='_blank'>Ir a last fm</a>");
                 $("#last").append("<br>");
                 $("#last").append("<p>" + bio.artist.bio.summary + "</p>");
@@ -93,15 +92,15 @@ function search(term) {
             }
             $("#deezer").append("<div class='coleccion'>\n\
                 <input id='albumimg' type='image' src='" + img + "' onclick='DZ.player.playAlbum(" + id + "); return false;'>\n\
-                <span>" + albumnes[i] + "</span></div>");
+                " + albumnes[i] + "</div>");
         }
 
     });
 }
 
 function topViral(valor) {
-    $("#top").empty();
-    document.getElementById("top").innerHTML = "<h2>Artistas Relacionados</h2>";
+    $("#topa").empty();
+    document.getElementById("topa").innerHTML = "<h2>Artistas Relacionados</h2>";
     var xhttp = new XMLHttpRequest();
     var url = "http://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + valor + "&limit=10&api_key=ae9dc375e16f12528b329b25a3cca3ee&format=json";
     xhttp.open("GET", url, true);
@@ -113,11 +112,11 @@ function topViral(valor) {
             for (var i = 0; i < similares.length; i++) {
                 var nombre = similares[i].name;
                 var pagina = similares[i].url;
-                //var subPagina = pagina.substring(pagina.length, 19);
-                $("#top").append("<input type='image' name='" + nombre + "' SRC='" + similares[i].image[4]["#text"] + "' ALT='" + similares[i].name + "' WIDTH=40 HEIGHT=40 onclick= 'busquedaTable(this)'>");
-                $("#top").append("<label>" + similares[i].name + "</label>");
-                $("#top").append("<a href='" + pagina + ">ir a last</a>");
-                $("#top").append("<br>");
+                var subPagina = pagina.substring(pagina.length, 19);
+                $("#topa").append("<input type='image' name='" + nombre + "' SRC='" + similares[i].image[4]["#text"] + "' ALT='" + similares[i].name + "' WIDTH=40 HEIGHT=40 onclick= 'busquedaTable(this)'>");
+                $("#topa").append("<label>" + similares[i].name + "</label>");
+                $("#topa").append("<a href='" + pagina + ">ir a last</a>");
+                $("#topa").append("<br>");
             }
 
         }
@@ -129,9 +128,13 @@ function busquedaTable(boton) {
     $("#deezer").empty();
     $("#last").empty();
     $("#napster").empty();
+    $("#bajar").empty();
+    $("#youtube").empty();
 
     lastfm(boton.name);
     search(boton.name);
+    get_mp3(boton.name);
+    youtube(boton.name);
 
 }
 ;
@@ -209,7 +212,7 @@ function youtube(valor){
             document.getElementById("youtube").innerHTML = "";
             var you_elem = document.getElementById('youtube');
 
-                for(var i = 0; i < 5; i++) {
+                for(var i = 0; i < 15; i++) {
                 var frames = document.createElement('iframe');
                 
                 // id_video = datos.items[0].id.playlistId; YouTube encuentra playlist y videos 
@@ -222,7 +225,7 @@ function youtube(valor){
                     frames.setAttribute('allowfullscreen', "");
                     frames.setAttribute('mozallowfullscreen', "");
                     frames.setAttribute('webkitallowfullscreen', "");
-                    frames.setAttribute('style', 'width: 350px; height: 250px; margin-top: 50px');
+                    frames.setAttribute('style', 'width: 350px; height: 250px; margin-top: 50px;margin-left: 30px');
                     you_elem.appendChild(frames);
                     v[i] = document.getElementById('v2' + (i + 1));
                     v[i].setAttribute('src', 'https://www.youtube.com/embed/' + id_video[i]);
@@ -241,51 +244,3 @@ var _es_vevo = function(titulo){
 
 
 
-function initMap(){      
-        var link= $('#the-form').serialize();
-        var nueva = link.replace('q=','');
-        var nueva2 = nueva.replace('+','%20');
-
-        $.ajax({
-            url: "http://api.bandsintown.com/artists/"+nueva2+"/events.json?api_version=2.0&app_id=MUSIC&date=upcoming",
-            data: null,
-            type: "GET",
-            crossDomain: true,
-            dataType: 'jsonp',
-
-            success: function(result){
-                $("#map").append("<h1>No hay eventos proximos</h1>");
-                $("#map").append("<p>");
-
-                var myLatLng = {lat: result[0].venue.latitude, lng: result[0].venue.longitude};
-                var map = new google.maps.Map(document.getElementById('map'), { zoom: 5,
-                    center: myLatLng,
-                    RotateControlOptions:true,
-                    mapTypeControl:true,
-                    mapTypeControlOptions: {
-                        style:google.maps.MapTypeControlStyle.DROPDOWN_MENU
-
-
-
-                    }
-                });
-
-                var tamano=result.length;
-
-                for( i = 0; i < tamano; i++ ) {
-                    var position = new google.maps.LatLng(result[i].venue.latitude,result[i].venue.longitude);
-                    marker = new google.maps.Marker({
-                        position: position,
-                        map: map,
-                        icon:'http://img.getjar.mobi/icon-50x50/ba/852391_thm.png',
-                        animation:google.maps.Animation.BOUNCE,
-                        title: result[i].title+" "+result[i].formatted_datetime
-                    });
-
-                    var infowindow = new google.maps.InfoWindow({
-                        content: result[i].title+" "+result[i].formatted_datetime
-                    });
-                }
-            }
-        })
-};

@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta property="og:title" content="Musica" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://musicforyou.ml/cliente.php" />
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>        
     <!-- Loading the Deezer SDK -->
@@ -14,7 +18,7 @@
     <form id="the-form">
 
         <input  type="text" id="texto" placeholder="busca tu artista">
-        <input type="button" id="buscar" value="buscar" onclick= "main()">
+        <input type="button" id="buscar" value="buscar" onclick= "main()" onmouseup="initMap()">
 
     </form>     
 
@@ -22,7 +26,7 @@
         <div id="topten">
             <h2>Top 10</h2>
         </div>
-        <div id="top">
+        <div id="topa">
             <h2>Artistas relacionados</h2>
         </div> 
     </div> 
@@ -60,10 +64,10 @@
     </div> 
 
 
-    <div id="map">
+    <div id="map" style="width:700px;height:380px;"></div>
+        </div>
 
-    </div>
-</body>
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 
 <script>
 $(document).ready(function () {
@@ -104,7 +108,62 @@ DZ.init({
         onload: onPlayerLoaded
     }
 });
+
+
+//
+
+
+function initMap(){      
+        var link= $('#the-form').serialize();
+        var nueva = link.replace('q=','');
+        var nueva2 = nueva.replace('+','%20');
+
+        $.ajax({
+            url: "http://api.bandsintown.com/artists/"+nueva2+"/events.json?api_version=2.0&app_id=MUSIC&date=upcoming",
+            data: null,
+            type: "GET",
+            crossDomain: true,
+            dataType: 'jsonp',
+
+            success: function(result){
+                $("#map").append("<h1>AHHHHH</h1>");
+                $("#map").append("<p>");
+                var myLatLng = {lat: result[0].venue.latitude, lng: result[0].venue.longitude};
+                console.log("REsult"+result);
+                var map = new google.maps.Map(document.getElementById('map'), { zoom: 5,
+                    center: myLatLng,
+                    RotateControlOptions:true,
+                    mapTypeControl:true,
+                    mapTypeControlOptions: {
+                        style:google.maps.MapTypeControlStyle.DROPDOWN_MENU
+                    }
+                });
+
+                var tamano=result.length;
+
+                for( i = 0; i < tamano; i++ ) {
+                    var position = new google.maps.LatLng(result[i].venue.latitude,result[i].venue.longitude);
+                    marker = new google.maps.Marker({
+                        position: position,
+                        map: map,
+                        icon:'http://img.getjar.mobi/icon-50x50/ba/852391_thm.png',
+                        animation:google.maps.Animation.BOUNCE,
+                        title: result[i].title+" "+result[i].formatted_datetime
+                    });
+
+                    var infowindow = new google.maps.InfoWindow({
+                        content: result[i].title+" "+result[i].formatted_datetime
+                    });
+                }
+            }
+        })
+};
+
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDH5603UZ1k1ARBwKxyVhlqhuhDB16UJwM"></script>
+<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+
+</body>
 </html>
